@@ -2,9 +2,9 @@ Pod::Spec.new do |spec|
 
   spec.name         = "AppStoreManager"
   spec.version      = "0.0.1"
-  spec.summary      = "A short description of AppStoreManager."
-  spec.homepage     = "http://EXAMPLE/AppStoreManager"
-  spec.license      = "MIT (example)"
+  spec.summary      = "AppStoreManager, An application new version checking "
+  spec.homepage     = "https://visarut-tippun.firebaseapp.com/"
+  spec.license      = "MIT"
   spec.author       = { "Visarut Tippun (Knot)" => "knotto.vt@gmail.com" }
   spec.source       = { :git => "https://github.com/knottovt/AppStoreManager.git", :tag => "#{spec.version}" }
   spec.ios.deployment_target = '11.0'
