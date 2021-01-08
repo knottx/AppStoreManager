@@ -45,17 +45,17 @@
 		1A1F281C25A7704A00C8D87A /* AppStoreManager */ = {
 			isa = PBXGroup;
 			children = (
-				1A1F283225A770BB00C8D87A /* Source */,
+				1A38DD5B25A7ED34003F396E /* AppStoreManager */,
 			);
 			path = AppStoreManager;
 			sourceTree = "<group>";
 		};
-		1A1F283225A770BB00C8D87A /* Source */ = {
+		1A38DD5B25A7ED34003F396E /* AppStoreManager */ = {
 			isa = PBXGroup;
 			children = (
 				1A1F283325A770D400C8D87A /* AppStoreManager.swift */,
 			);
-			path = Source;
+			path = AppStoreManager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
