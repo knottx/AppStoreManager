@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		1A38DD9B25A7F907003F396E /* AppStoreManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A38DD9125A7F907003F396E /* AppStoreManager.framework */; };
 		1A38DDA025A7F907003F396E /* AppStoreManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A38DD9F25A7F907003F396E /* AppStoreManagerTests.swift */; };
-		1A38DDA225A7F907003F396E /* AppStoreManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 1A38DD9425A7F907003F396E /* AppStoreManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1A38DDB625A7FB82003F396E /* AppStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A38DDB525A7FB82003F396E /* AppStoreManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -25,7 +24,6 @@
 
 /* Begin PBXFileReference section */
 		1A38DD9125A7F907003F396E /* AppStoreManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AppStoreManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		1A38DD9425A7F907003F396E /* AppStoreManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppStoreManager.h; sourceTree = "<group>"; };
 		1A38DD9525A7F907003F396E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1A38DD9A25A7F907003F396E /* AppStoreManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppStoreManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A38DD9F25A7F907003F396E /* AppStoreManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreManagerTests.swift; sourceTree = "<group>"; };
@@ -73,7 +71,6 @@
 		1A38DD9325A7F907003F396E /* AppStoreManager */ = {
 			isa = PBXGroup;
 			children = (
-				1A38DD9425A7F907003F396E /* AppStoreManager.h */,
 				1A38DD9525A7F907003F396E /* Info.plist */,
 				1A38DDB525A7FB82003F396E /* AppStoreManager.swift */,
 			);
@@ -96,7 +93,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1A38DDA225A7F907003F396E /* AppStoreManager.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,7 +356,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.0.1;
+				MARKETING_VERSION = 0.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.knottx.AppStoreManager;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -388,7 +384,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.0.1;
+				MARKETING_VERSION = 0.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.knottx.AppStoreManager;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;

@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "AppStoreManager"
-  spec.version      = "0.0.2"
+  spec.version      = "0.0.3"
   spec.summary      = "AppStoreManager is a new version checking framework for iOS. "
   spec.homepage     = "https://visarut-tippun.firebaseapp.com/"
   spec.license      = { :type => 'MIT', :file => 'LICENSE.md' }
