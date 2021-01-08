@@ -7,59 +7,110 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1A1F283425A770D400C8D87A /* AppStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1F283325A770D400C8D87A /* AppStoreManager.swift */; };
+		1A38DD9B25A7F907003F396E /* AppStoreManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A38DD9125A7F907003F396E /* AppStoreManager.framework */; };
+		1A38DDA025A7F907003F396E /* AppStoreManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A38DD9F25A7F907003F396E /* AppStoreManagerTests.swift */; };
+		1A38DDA225A7F907003F396E /* AppStoreManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 1A38DD9425A7F907003F396E /* AppStoreManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1A38DDB625A7FB82003F396E /* AppStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A38DDB525A7FB82003F396E /* AppStoreManager.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		1A38DD9C25A7F907003F396E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1A38DD8825A7F907003F396E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1A38DD9025A7F907003F396E;
+			remoteInfo = AppStoreManager;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
-		1A1F281A25A7704A00C8D87A /* AppStoreManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppStoreManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		1A1F283325A770D400C8D87A /* AppStoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreManager.swift; sourceTree = "<group>"; };
+		1A38DD9125A7F907003F396E /* AppStoreManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AppStoreManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1A38DD9425A7F907003F396E /* AppStoreManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppStoreManager.h; sourceTree = "<group>"; };
+		1A38DD9525A7F907003F396E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1A38DD9A25A7F907003F396E /* AppStoreManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppStoreManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1A38DD9F25A7F907003F396E /* AppStoreManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreManagerTests.swift; sourceTree = "<group>"; };
+		1A38DDA125A7F907003F396E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1A38DDB525A7FB82003F396E /* AppStoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		1A1F281725A7704A00C8D87A /* Frameworks */ = {
+		1A38DD8E25A7F907003F396E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		1A38DD9725A7F907003F396E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1A38DD9B25A7F907003F396E /* AppStoreManager.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1A1F281125A7704A00C8D87A = {
+		1A38DD8725A7F907003F396E = {
 			isa = PBXGroup;
 			children = (
-				1A1F281C25A7704A00C8D87A /* AppStoreManager */,
-				1A1F281B25A7704A00C8D87A /* Products */,
+				1A38DD9325A7F907003F396E /* AppStoreManager */,
+				1A38DD9E25A7F907003F396E /* AppStoreManagerTests */,
+				1A38DD9225A7F907003F396E /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		1A1F281B25A7704A00C8D87A /* Products */ = {
+		1A38DD9225A7F907003F396E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1A1F281A25A7704A00C8D87A /* AppStoreManager.app */,
+				1A38DD9125A7F907003F396E /* AppStoreManager.framework */,
+				1A38DD9A25A7F907003F396E /* AppStoreManagerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		1A1F281C25A7704A00C8D87A /* AppStoreManager */ = {
+		1A38DD9325A7F907003F396E /* AppStoreManager */ = {
 			isa = PBXGroup;
 			children = (
-				1A1F283325A770D400C8D87A /* AppStoreManager.swift */,
+				1A38DD9425A7F907003F396E /* AppStoreManager.h */,
+				1A38DD9525A7F907003F396E /* Info.plist */,
+				1A38DDB525A7FB82003F396E /* AppStoreManager.swift */,
 			);
 			path = AppStoreManager;
 			sourceTree = "<group>";
 		};
+		1A38DD9E25A7F907003F396E /* AppStoreManagerTests */ = {
+			isa = PBXGroup;
+			children = (
+				1A38DD9F25A7F907003F396E /* AppStoreManagerTests.swift */,
+				1A38DDA125A7F907003F396E /* Info.plist */,
+			);
+			path = AppStoreManagerTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		1A38DD8C25A7F907003F396E /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1A38DDA225A7F907003F396E /* AppStoreManager.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
-		1A1F281925A7704A00C8D87A /* AppStoreManager */ = {
+		1A38DD9025A7F907003F396E /* AppStoreManager */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1A1F282E25A7704C00C8D87A /* Build configuration list for PBXNativeTarget "AppStoreManager" */;
+			buildConfigurationList = 1A38DDA525A7F907003F396E /* Build configuration list for PBXNativeTarget "AppStoreManager" */;
 			buildPhases = (
-				1A1F281625A7704A00C8D87A /* Sources */,
-				1A1F281725A7704A00C8D87A /* Frameworks */,
-				1A1F281825A7704A00C8D87A /* Resources */,
+				1A38DD8C25A7F907003F396E /* Headers */,
+				1A38DD8D25A7F907003F396E /* Sources */,
+				1A38DD8E25A7F907003F396E /* Frameworks */,
+				1A38DD8F25A7F907003F396E /* Resources */,
 			);
 			buildRules = (
 			);
@@ -67,24 +118,46 @@
 			);
 			name = AppStoreManager;
 			productName = AppStoreManager;
-			productReference = 1A1F281A25A7704A00C8D87A /* AppStoreManager.app */;
-			productType = "com.apple.product-type.application";
+			productReference = 1A38DD9125A7F907003F396E /* AppStoreManager.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		1A38DD9925A7F907003F396E /* AppStoreManagerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1A38DDA825A7F907003F396E /* Build configuration list for PBXNativeTarget "AppStoreManagerTests" */;
+			buildPhases = (
+				1A38DD9625A7F907003F396E /* Sources */,
+				1A38DD9725A7F907003F396E /* Frameworks */,
+				1A38DD9825A7F907003F396E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1A38DD9D25A7F907003F396E /* PBXTargetDependency */,
+			);
+			name = AppStoreManagerTests;
+			productName = AppStoreManagerTests;
+			productReference = 1A38DD9A25A7F907003F396E /* AppStoreManagerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		1A1F281225A7704A00C8D87A /* Project object */ = {
+		1A38DD8825A7F907003F396E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1230;
 				LastUpgradeCheck = 1230;
 				TargetAttributes = {
-					1A1F281925A7704A00C8D87A = {
+					1A38DD9025A7F907003F396E = {
+						CreatedOnToolsVersion = 12.3;
+						LastSwiftMigration = 1230;
+					};
+					1A38DD9925A7F907003F396E = {
 						CreatedOnToolsVersion = 12.3;
 					};
 				};
 			};
-			buildConfigurationList = 1A1F281525A7704A00C8D87A /* Build configuration list for PBXProject "AppStoreManager" */;
+			buildConfigurationList = 1A38DD8B25A7F907003F396E /* Build configuration list for PBXProject "AppStoreManager" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -92,18 +165,26 @@
 				en,
 				Base,
 			);
-			mainGroup = 1A1F281125A7704A00C8D87A;
-			productRefGroup = 1A1F281B25A7704A00C8D87A /* Products */;
+			mainGroup = 1A38DD8725A7F907003F396E;
+			productRefGroup = 1A38DD9225A7F907003F396E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1A1F281925A7704A00C8D87A /* AppStoreManager */,
+				1A38DD9025A7F907003F396E /* AppStoreManager */,
+				1A38DD9925A7F907003F396E /* AppStoreManagerTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		1A1F281825A7704A00C8D87A /* Resources */ = {
+		1A38DD8F25A7F907003F396E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1A38DD9825A7F907003F396E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -113,18 +194,34 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		1A1F281625A7704A00C8D87A /* Sources */ = {
+		1A38DD8D25A7F907003F396E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1A1F283425A770D400C8D87A /* AppStoreManager.swift in Sources */,
+				1A38DDB625A7FB82003F396E /* AppStoreManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1A38DD9625A7F907003F396E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1A38DDA025A7F907003F396E /* AppStoreManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		1A38DD9D25A7F907003F396E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1A38DD9025A7F907003F396E /* AppStoreManager */;
+			targetProxy = 1A38DD9C25A7F907003F396E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
-		1A1F282C25A7704C00C8D87A /* Debug */ = {
+		1A38DDA325A7F907003F396E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -158,6 +255,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -182,10 +280,12 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
-		1A1F282D25A7704C00C8D87A /* Release */ = {
+		1A38DDA425A7F907003F396E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -219,6 +319,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -237,45 +338,98 @@
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
-		1A1F282F25A7704C00C8D87A /* Debug */ = {
+		1A38DDA625A7F907003F396E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = VLXC279595;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = AppStoreManager/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 0.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.knottx.AppStoreManager;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1A38DDA725A7F907003F396E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = VLXC279595;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = AppStoreManager/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 0.0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.knottx.AppStoreManager;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		1A38DDA925A7F907003F396E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = VLXC279595;
+				INFOPLIST_FILE = AppStoreManagerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.knottx.AppStoreManagerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		1A1F283025A7704C00C8D87A /* Release */ = {
+		1A38DDAA25A7F907003F396E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VLXC279595;
-				INFOPLIST_FILE = AppStoreManager/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				INFOPLIST_FILE = AppStoreManagerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.knottx.AppStoreManager;
+				PRODUCT_BUNDLE_IDENTIFIER = com.knottx.AppStoreManagerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -285,25 +439,34 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1A1F281525A7704A00C8D87A /* Build configuration list for PBXProject "AppStoreManager" */ = {
+		1A38DD8B25A7F907003F396E /* Build configuration list for PBXProject "AppStoreManager" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1A1F282C25A7704C00C8D87A /* Debug */,
-				1A1F282D25A7704C00C8D87A /* Release */,
+				1A38DDA325A7F907003F396E /* Debug */,
+				1A38DDA425A7F907003F396E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1A1F282E25A7704C00C8D87A /* Build configuration list for PBXNativeTarget "AppStoreManager" */ = {
+		1A38DDA525A7F907003F396E /* Build configuration list for PBXNativeTarget "AppStoreManager" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1A1F282F25A7704C00C8D87A /* Debug */,
-				1A1F283025A7704C00C8D87A /* Release */,
+				1A38DDA625A7F907003F396E /* Debug */,
+				1A38DDA725A7F907003F396E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1A38DDA825A7F907003F396E /* Build configuration list for PBXNativeTarget "AppStoreManagerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1A38DDA925A7F907003F396E /* Debug */,
+				1A38DDAA25A7F907003F396E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 1A1F281225A7704A00C8D87A /* Project object */;
+	rootObject = 1A38DD8825A7F907003F396E /* Project object */;
 }

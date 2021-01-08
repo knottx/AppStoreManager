@@ -10,8 +10,7 @@ Pod::Spec.new do |spec|
   
   spec.swift_version   = "5.0"
   spec.ios.deployment_target = "9.0"
-  spec.source_files  = "AppStoreManager/**/*.swift"
-  spec.exclude_files = "AppStoreManager/**/*.plist"
+  spec.source_files  = "AppStoreManager/**/*.{h,m,swift}"
   spec.requires_arc  = true
   spec.dependency "RxSwift"
   spec.dependency "RxCocoa"
