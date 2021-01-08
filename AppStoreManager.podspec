@@ -9,7 +9,7 @@ Pod::Spec.new do |spec|
   spec.source       = { :git => "https://github.com/knottovt/AppStoreManager.git", :tag => "#{spec.version}" }
   
   spec.swift_version   = "5.0"
-  spec.ios.deployment_target = '8.0'
+  spec.ios.deployment_target = '9.0'
   spec.source_files  = "AppStoreManager/AppStoreManager/**/*.swift"
   spec.exclude_files = "AppStoreManager/**/*.plist"
   spec.requires_arc  = true

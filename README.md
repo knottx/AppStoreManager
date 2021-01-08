@@ -1,11 +1,10 @@
-## 🏵 Introduction
-
 **AppStoreManager** is a new version checking framework for iOS.
 
 ## 📋 Requirements
 
-- iOS 8.0+
-- Xcode 9.0+ with Swift 5.0+
+* iOS 9.0 or later
+* Xcode 12.x
+* Swift 5.x
 
 ## 📲 Installation
 
