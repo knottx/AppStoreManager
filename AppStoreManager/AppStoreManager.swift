@@ -9,9 +9,12 @@ import Foundation
 
 public class AppStoreManager {
     
+    public static let shared = AppStoreManager()
     
-    public func currentInstalledVersion() -> String? {
-        return Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
+    public var currentInstalledVersion:String? {
+        get {
+            return Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
+        }
     }
     
     
