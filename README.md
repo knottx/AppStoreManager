@@ -8,7 +8,7 @@
 
 ## 📲 Installation
 
-`AppStoreManager` is available on [CocoaPods](https://cocoapods.org):
+`AppStoreManager` is available on [CocoaPods](https://cocoapods.org/pods/AppStoreManager):
 
 ```ruby
 pod 'AppStoreManager'
