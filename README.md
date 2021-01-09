@@ -1,5 +1,19 @@
 **AppStoreManager** is a new version checking framework for iOS.
 
+## 📋 Requirements
+
+* iOS 10.0+
+* Xcode 11+
+* Swift 5.1+
+
+## 📲 Installation
+
+`AppStoreManager` is available on [CocoaPods](https://cocoapods.org/pods/AppStoreManager):
+
+```ruby
+pod 'AppStoreManager'
+```
+
 ## 📝 How
 ### Code Implementation
 First:
@@ -41,18 +55,4 @@ AppStoreManager.shared.configureAlert(title: <String?>, message: <String?>)
 AppStoreManager.shared.configureAlert(updateButtonTitle: <String?>, skipButtonTitle: <String?>)
 //  Default updateButtonTitle is "Update"
 //  Default skipButtonTitle is "Skip"
-```
-
-## 📋 Requirements
-
-* iOS 10.0+
-* Xcode 11+
-* Swift 5.1+
-
-## 📲 Installation
-
-`AppStoreManager` is available on [CocoaPods](https://cocoapods.org/pods/AppStoreManager):
-
-```ruby
-pod 'AppStoreManager'
 ```
