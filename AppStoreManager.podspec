@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "AppStoreManager"
-  spec.version      = "0.0.5"
+  spec.version      = "0.0.6"
   spec.summary      = "A new version checking framework in Swift."
 
   spec.homepage     = "https://visarut-tippun.firebaseapp.com/"
