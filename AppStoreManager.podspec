@@ -13,9 +13,9 @@ Pod::Spec.new do |spec|
   spec.ios.deployment_target = "10.0"
   spec.source_files  = "AppStoreManager/**/*.swift"
   spec.requires_arc  = true
-  spec.dependency "RxSwift", ~> '6.0.0'
-  spec.dependency "RxCocoa", ~> '6.0.0'
-  spec.dependency "RxAlamofire", ~> '6.1.1'
-  spec.dependency "Alamofire", ~> '5.4.1'
+  spec.dependency "RxSwift", '~> 6.0.0'
+  spec.dependency "RxCocoa", '~> 6.0.0'
+  spec.dependency "RxAlamofire", '~> 6.1.1'
+  spec.dependency "Alamofire", '~> 5.4.1'
 
 end
