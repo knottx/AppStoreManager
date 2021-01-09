@@ -94,7 +94,7 @@ public class AppStoreManager {
                let appStoreVersion = result?.version {
                 switch currentInstalledVersion.compare(appStoreVersion, options: .numeric) {
                 case .orderedAscending:
-                    self.showAlertUpdate(at: vc, canSkip: canSkip)
+                    self.showAlertUpdate(at: vc, canSkip: canSkip, preferredStyle: preferredStyle)
                 case .orderedDescending, .orderedSame:
                     break
                 }
