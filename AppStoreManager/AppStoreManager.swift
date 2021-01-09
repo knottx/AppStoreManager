@@ -7,6 +7,17 @@
 
 import UIKit
 
+public enum VersionCheckType:Int {
+    case immediately = 0
+    case daily = 1
+    case weekly = 7
+}
+
+enum AppStoreDefaults: String {
+    case storedVersionCheckDate
+    case storedSkippedVersion
+}
+
 struct AppStoreResponse: Decodable {
     var resultCount:Int?
     var results:[AppStoreResult]
@@ -27,6 +38,15 @@ public class AppStoreManager {
     var skipButtonTitle:String = "Skip"
     var updateButtonTitle:String = "Update"
     
+    var lastVersionCheckDate:Date? {
+        didSet{
+            if let date = self.lastVersionCheckDate {
+                UserDefaults.standard.set(date, forKey: AppStoreDefaults.storedVersionCheckDate.rawValue)
+                UserDefaults.standard.synchronize()
+            }
+        }
+    }
+    
     let bundleId = Bundle.main.bundleIdentifier ?? ""
     
     var currentInstalledVersion:String? {
@@ -36,6 +56,10 @@ public class AppStoreManager {
     }
     
     var appStoreResult:AppStoreResult?
+    
+    init() {
+        self.lastVersionCheckDate = UserDefaults.standard.object(forKey: AppStoreDefaults.storedVersionCheckDate.rawValue) as? Date
+    }
     
     func getStoreVersion(completion: @escaping (AppStoreResult?) -> ()) {
         guard let url = URL(string: "https://itunes.apple.com/lookup?bundleId=\(self.bundleId)") else {
@@ -63,13 +87,26 @@ public class AppStoreManager {
         task.resume()
     }
     
-    public func checkNewVersion(isAvailable: @escaping (Bool) -> ()) {
+    public func checkNewVersion(_ type:VersionCheckType, isAvailable: @escaping (Bool) -> ()) {
         self.getStoreVersion { (result) in
             if let currentInstalledVersion = self.currentInstalledVersion,
                let appStoreVersion = result?.version {
                 switch currentInstalledVersion.compare(appStoreVersion, options: .numeric) {
                 case .orderedAscending:
-                    isAvailable(true)
+                    switch type {
+                    case .immediately:
+                        isAvailable(true)
+                    default:
+                        guard let lastVersionCheckDate = self.lastVersionCheckDate else {
+                            isAvailable(true)
+                            return
+                        }
+                        if Date.days(since: lastVersionCheckDate) >= type.rawValue {
+                            isAvailable(true)
+                        }else{
+                            isAvailable(false)
+                        }
+                    }
                 case .orderedDescending, .orderedSame:
                     isAvailable(false)
                 }
@@ -79,7 +116,7 @@ public class AppStoreManager {
         }
     }
     
-    public func checkNewVersionAvailable(at vc:UIViewController, canSkip:Bool, preferredStyle: UIAlertController.Style = .alert) {
+    public func checkNewVersionAndShowAlert(_ type:VersionCheckType,at vc:UIViewController, canSkip:Bool, preferredStyle: UIAlertController.Style = .alert) {
         self.getStoreVersion { (result) in
             if let currentInstalledVersion = self.currentInstalledVersion,
                let appStoreVersion = result?.version {
@@ -107,9 +144,14 @@ public class AppStoreManager {
     
     public func showAlertUpdate(at vc:UIViewController, canSkip:Bool, preferredStyle:UIAlertController.Style = .alert) {
         DispatchQueue.main.async {
+            self.lastVersionCheckDate = Date()
+            
+            
             guard let appStoreId = self.appStoreResult?.trackId else { return }
             let alertVc = UIAlertController(title: self.title, message: self.message, preferredStyle: preferredStyle)
-            let skip = UIAlertAction(title: "Skip", style: .cancel, handler: nil)
+            let skip = UIAlertAction(title: "Skip", style: .cancel) { (_) in
+                //
+            }
             let update = UIAlertAction(title: "Update", style: .default) { (_) in
                 if let url = URL(string: "https://itunes.apple.com/app/id\(appStoreId)"),
                    UIApplication.shared.canOpenURL(url) {
@@ -126,6 +168,16 @@ public class AppStoreManager {
     
     func log(_ value: String) {
         print("📲: [AppStore] => \(value)")
+    }
+    
+}
+
+extension Date {
+    
+    static func days(since date: Date) -> Int {
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.day], from: date, to: Date())
+        return components.day ?? 0
     }
     
 }

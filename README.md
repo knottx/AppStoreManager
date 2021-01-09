@@ -7,25 +7,40 @@ First:
 import SideMenu
 ```
 
+Show alert when update available, do something like this:
 ```swift
+//  Can select version check type => .immediately, .daily, .weekly
+AppStoreManager.shared.checkNewVersionAndShowAlert(.immediately, at: self, canSkip: true, preferredStyle: .alert)
+//  If you don't need to show skip button, you can set the 'canSkip: false'
+//  PreferredStyle default is '.alert', Can be select between '.alert' and '.actionSheet'
+```
 
-AppStoreManager.shared.checkNewVersion { (isAvailable) in
+For handle when update available, do something like this:
+```swift
+//  Can select version check type => .immediately, .daily, .weekly
+AppStoreManager.shared.checkNewVersion(.immediately) { (isAvailable) in
     if isAvailable {
-        //has new version available.
-        AppStoreManager.shared.showAlertUpdate(at: self, canSkip: true)
-
+        //  has new version available.
+        AppStoreManager.shared.showAlertUpdate(at: self, canSkip: true, preferredStyle: .alert)
+        //  If you don't need to show skip button, you can set the 'canSkip: false'
+        //  PreferredStyle default is '.alert', Can be select between '.alert' and '.actionSheet'
     }else{
-        //no new version.
+        //  no new version.
     }
 }
-
 ```
 ### Customization
 #### AppStoreManager
 `AppStoreManager` supports the following:
 ```swift
-    AppStoreManager.shared.configureAlert(title: <#T##String?#>, message: <#T##String?#>)
-    AppStoreManager.shared.configureAlert(updateButtonTitle: <#T##String?#>, skipButtonTitle: <#T##String?#>)
+
+AppStoreManager.shared.configureAlert(title: <String?>, message: <String?>)
+//  Default title is "New version available"
+//  Default message is "There is an update available. Please update to use this application.", message is optional.
+
+AppStoreManager.shared.configureAlert(updateButtonTitle: <String?>, skipButtonTitle: <String?>)
+//  Default updateButtonTitle is "Update"
+//  Default skipButtonTitle is "Skip"
 ```
 
 ## 📋 Requirements
