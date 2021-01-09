@@ -4,7 +4,7 @@
 ### Code Implementation
 First:
 ```swift
-import SideMenu
+import AppStoreManager
 ```
 
 Show alert when update available, do something like this:
