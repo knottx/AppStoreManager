@@ -6,10 +6,6 @@ target 'AppStoreManager' do
   use_frameworks!
 
   # Pods for AppStoreManager
-  pod 'Alamofire'
-  pod 'RxSwift'
-  pod 'RxCocoa'
-  pod 'RxAlamofire'
 
   target 'AppStoreManagerTests' do
     # Pods for testing

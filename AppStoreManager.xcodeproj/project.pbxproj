@@ -158,7 +158,6 @@
 				1A38DD9625A7F907003F396E /* Sources */,
 				1A38DD9725A7F907003F396E /* Frameworks */,
 				1A38DD9825A7F907003F396E /* Resources */,
-				0A15D10352387DA74094F1A4 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -225,23 +224,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0A15D10352387DA74094F1A4 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-AppStoreManager-AppStoreManagerTests/Pods-AppStoreManager-AppStoreManagerTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-AppStoreManager-AppStoreManagerTests/Pods-AppStoreManager-AppStoreManagerTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AppStoreManager-AppStoreManagerTests/Pods-AppStoreManager-AppStoreManagerTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		1D4BC6FDB11D0CD87921166B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

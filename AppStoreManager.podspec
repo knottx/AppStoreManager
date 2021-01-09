@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "AppStoreManager"
-  spec.version      = "0.0.6"
+  spec.version      = "0.0.7"
   spec.summary      = "A new version checking framework in Swift."
 
   spec.homepage     = "https://visarut-tippun.firebaseapp.com/"
@@ -13,9 +13,5 @@ Pod::Spec.new do |spec|
   spec.ios.deployment_target = "10.0"
   spec.source_files  = "AppStoreManager/**/*.swift"
   spec.requires_arc  = true
-  spec.dependency "RxSwift", '~> 6.0.0'
-  spec.dependency "RxCocoa", '~> 6.0.0'
-  spec.dependency "RxAlamofire", '~> 6.1.1'
-  spec.dependency "Alamofire", '~> 5.4.1'
 
 end
