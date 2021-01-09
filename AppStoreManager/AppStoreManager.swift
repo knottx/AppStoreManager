@@ -5,10 +5,7 @@
 //  Created by Visarut Tippun on 8/1/21.
 //
 
-import Alamofire
-import RxSwift
-import RxCocoa
-import RxAlamofire
+import UIKit
 
 struct AppStoreResponse: Decodable {
     var resultCount:Int?
@@ -23,7 +20,6 @@ struct AppStoreResult: Decodable {
 public class AppStoreManager {
     
     public static let shared = AppStoreManager()
-    private let bag = DisposeBag()
     
     var title:String = "New version available"
     var message:String? = "There is an update available. Please update to use this application."
@@ -41,38 +37,34 @@ public class AppStoreManager {
     
     var appStoreResult:AppStoreResult?
     
-    
-    func getStoreVersion() -> Observable<AppStoreResult?> {
-        return Observable.create { (observable) -> Disposable in
-            AF.rx.request(.get, "https://itunes.apple.com/lookup?bundleId=\(self.bundleId)").responseJSON().subscribe { (response) in
-                switch response.result {
-                case .success:
-                    if let data = response.data,
-                       let responseData = try? JSONDecoder().decode(AppStoreResponse.self, from: data),
-                       let result = responseData.results.first {
-                        self.log("AppStore ID: \(result.trackId ?? 0)")
-                        self.log("AppStore version: \(result.version ?? "")")
-                        self.appStoreResult = result
-                        observable.onNext(result)
-                        observable.onCompleted()
-                    }else{
-                        self.appStoreResult = nil
-                        observable.onNext(nil)
-                        observable.onCompleted()
-                    }
-                case .failure(let error):
-                    observable.onError(error)
-                }
-            } onError: { (error) in
-                observable.onError(error)
-            }.disposed(by: self.bag)
-            
-            return Disposables.create()
+    func getStoreVersion(completion: @escaping (AppStoreResult?) -> ()) {
+        guard let url = URL(string: "https://itunes.apple.com/lookup?bundleId=\(self.bundleId)") else {
+            completion(nil)
+            return
         }
+        let session = URLSession(configuration: .default)
+        let task = session.dataTask(with: url) { (data, response, error) in
+            if let er = error {
+                self.log(er.localizedDescription)
+                completion(nil)
+            }
+            if let safeData = data,
+               let responseData = try? JSONDecoder().decode(AppStoreResponse.self, from: safeData),
+               let result = responseData.results.first {
+                self.log("AppStore ID: \(result.trackId ?? 0)")
+                self.log("AppStore version: \(result.version ?? "")")
+                self.appStoreResult = result
+                completion(result)
+            }else{
+                self.appStoreResult = nil
+                completion(nil)
+            }
+        }
+        task.resume()
     }
     
     public func checkNewVersion(isAvailable: @escaping (Bool) -> ()) {
-        self.getStoreVersion().subscribe { (result) in
+        self.getStoreVersion { (result) in
             if let currentInstalledVersion = self.currentInstalledVersion,
                let appStoreVersion = result?.version {
                 switch currentInstalledVersion.compare(appStoreVersion, options: .numeric) {
@@ -81,15 +73,14 @@ public class AppStoreManager {
                 case .orderedDescending, .orderedSame:
                     isAvailable(false)
                 }
+            }else{
+                isAvailable(false)
             }
-        } onError: { (error) in
-            self.log(error.localizedDescription)
-            isAvailable(false)
-        }.disposed(by: self.bag)
+        }
     }
     
     public func checkNewVersionAvailable(at vc:UIViewController, canSkip:Bool, preferredStyle: UIAlertController.Style = .alert) {
-        self.getStoreVersion().subscribe { (result) in
+        self.getStoreVersion { (result) in
             if let currentInstalledVersion = self.currentInstalledVersion,
                let appStoreVersion = result?.version {
                 switch currentInstalledVersion.compare(appStoreVersion, options: .numeric) {
@@ -99,9 +90,7 @@ public class AppStoreManager {
                     break
                 }
             }
-        } onError: { (error) in
-            self.log(error.localizedDescription)
-        }.disposed(by: self.bag)
+        }
     }
     
     //MARK: - Alert
