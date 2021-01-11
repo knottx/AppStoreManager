@@ -95,13 +95,16 @@ public class AppStoreManager {
                 case .orderedAscending:
                     switch type {
                     case .immediately:
+                        self.lastVersionCheckDate = Date()
                         isAvailable(true)
                     default:
                         guard let lastVersionCheckDate = self.lastVersionCheckDate else {
+                            self.lastVersionCheckDate = Date()
                             isAvailable(true)
                             return
                         }
                         if Date.days(since: lastVersionCheckDate) >= type.rawValue {
+                            self.lastVersionCheckDate = Date()
                             isAvailable(true)
                         }else{
                             isAvailable(false)
@@ -122,6 +125,7 @@ public class AppStoreManager {
                let appStoreVersion = result?.version {
                 switch currentInstalledVersion.compare(appStoreVersion, options: .numeric) {
                 case .orderedAscending:
+                    self.lastVersionCheckDate = Date()
                     self.showAlertUpdate(at: vc, canSkip: canSkip, preferredStyle: preferredStyle)
                 case .orderedDescending, .orderedSame:
                     break
@@ -144,9 +148,6 @@ public class AppStoreManager {
     
     public func showAlertUpdate(at vc:UIViewController, canSkip:Bool, preferredStyle:UIAlertController.Style = .alert) {
         DispatchQueue.main.async {
-            self.lastVersionCheckDate = Date()
-            
-            
             guard let appStoreId = self.appStoreResult?.trackId else { return }
             let alertVc = UIAlertController(title: self.title, message: self.message, preferredStyle: preferredStyle)
             let skip = UIAlertAction(title: "Skip", style: .cancel) { (_) in
