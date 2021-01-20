@@ -4,7 +4,7 @@ Pod::Spec.new do |spec|
   spec.version      = "0.1.2"
   spec.summary      = "A new version checking framework in Swift."
 
-  spec.homepage     = "https://visarut-tippun.firebaseapp.com/"
+  spec.homepage     = "https://knottovt.github.io"
   spec.license      = { :type => 'MIT', :file => 'LICENSE.md' }
   spec.author       = { "Visarut Tippun" => "knotto.vt@gmail.com" }
   spec.source       = { :git => "https://github.com/knottovt/AppStoreManager.git", :tag => "#{spec.version}" }
