@@ -148,22 +148,36 @@ public class AppStoreManager {
     
     public func showAlertUpdate(at vc:UIViewController, canSkip:Bool, preferredStyle:UIAlertController.Style = .alert) {
         DispatchQueue.main.async {
-            guard let appStoreId = self.appStoreResult?.trackId else { return }
             let alertVc = UIAlertController(title: self.title, message: self.message, preferredStyle: preferredStyle)
             let skip = UIAlertAction(title: "Skip", style: .cancel) { (_) in
                 //
             }
             let update = UIAlertAction(title: "Update", style: .default) { (_) in
-                if let url = URL(string: "https://itunes.apple.com/app/id\(appStoreId)"),
-                   UIApplication.shared.canOpenURL(url) {
-                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                }
+                self.openAppStore()
             }
             alertVc.addAction(update)
             if canSkip {
                 alertVc.addAction(skip)
             }
             vc.present(alertVc, animated: true, completion: nil)
+        }
+    }
+    
+    public func openAppStore() {
+        if let appStoreId = self.appStoreResult?.trackId {
+            self.openAppStore(id: appStoreId)
+        }else{
+            self.getStoreVersion { (result) in
+                guard let appStoreId = result?.trackId else { return }
+                self.openAppStore(id: appStoreId)
+            }
+        }
+    }
+    
+    func openAppStore(id appStoreId:Int) {
+        if let url = URL(string: "https://itunes.apple.com/app/id\(appStoreId)"),
+           UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
     }
     

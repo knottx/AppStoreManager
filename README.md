@@ -43,6 +43,11 @@ AppStoreManager.shared.checkNewVersion(.immediately) { (isAvailable) in
     }
 }
 ```
+
+For open AppStore, do something like this:
+```swift
+AppStoreManager.shared.openAppStore()
+```
 ### Customization
 #### AppStoreManager
 `AppStoreManager` supports the following:
