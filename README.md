@@ -47,6 +47,7 @@ AppStoreManager.shared.checkNewVersion(.immediately) { (isAvailable) in
 For open AppStore, do something like this:
 ```swift
 AppStoreManager.shared.openAppStore()
+//  go to AppStore for update your Application
 ```
 ### Customization
 #### AppStoreManager
