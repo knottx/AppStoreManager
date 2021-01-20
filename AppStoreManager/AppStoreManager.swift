@@ -130,6 +130,8 @@ public class AppStoreManager {
                 case .orderedDescending, .orderedSame:
                     break
                 }
+            }else{
+                self.log("Can't get Version")
             }
         }
     }
@@ -168,7 +170,10 @@ public class AppStoreManager {
             self.openAppStore(id: appStoreId)
         }else{
             self.getStoreVersion { (result) in
-                guard let appStoreId = result?.trackId else { return }
+                guard let appStoreId = result?.trackId else {
+                    self.log("Can't get an AppId")
+                    return
+                }
                 self.openAppStore(id: appStoreId)
             }
         }
@@ -178,6 +183,8 @@ public class AppStoreManager {
         if let url = URL(string: "https://itunes.apple.com/app/id\(appStoreId)"),
            UIApplication.shared.canOpenURL(url) {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }else{
+            self.log("Can't open AppStore")
         }
     }
     
