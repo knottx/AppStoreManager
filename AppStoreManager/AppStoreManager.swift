@@ -1,5 +1,5 @@
 //
-//  AppStoreManager.swift
+//  .swift
 //  AppStoreManager
 //
 //  Created by Visarut Tippun on 8/1/21.
@@ -18,25 +18,15 @@ enum AppStoreDefaults: String {
     case storedSkippedVersion
 }
 
-struct AppStoreResponse: Decodable {
-    var resultCount:Int?
-    var results:[AppStoreResult]
-}
-
-struct AppStoreResult: Decodable {
-    var trackId:Int?
-    var version:String?
-}
-
 public class AppStoreManager {
     
     public static let shared = AppStoreManager()
     
-    var title:String = "New version available"
-    var message:String? = "There is an update available. Please update to use this application."
+    var title:String = AppStoreManagerConstant.alertTitle
+    var message:String? = AppStoreManagerConstant.alertMessage
     
-    var skipButtonTitle:String = "Skip"
-    var updateButtonTitle:String = "Update"
+    var skipButtonTitle:String = AppStoreManagerConstant.skipButtonTitle
+    var updateButtonTitle:String = AppStoreManagerConstant.updateButtonTitle
     
     var lastVersionCheckDate:Date? {
         didSet{
@@ -67,20 +57,20 @@ public class AppStoreManager {
             return
         }
         let session = URLSession(configuration: .default)
-        let task = session.dataTask(with: url) { (data, response, error) in
+        let task = session.dataTask(with: url) { [weak self] (data, response, error) in
             if let er = error {
-                self.log(er.localizedDescription)
+                self?.log(er.localizedDescription)
                 completion(nil)
             }
             if let safeData = data,
                let responseData = try? JSONDecoder().decode(AppStoreResponse.self, from: safeData),
                let result = responseData.results.first {
-                self.log("AppStore ID: \(result.trackId ?? 0)")
-                self.log("AppStore version: \(result.version ?? "")")
-                self.appStoreResult = result
+                self?.log("AppStore ID: \(result.trackId ?? 0)")
+                self?.log("AppStore version: \(result.version ?? "")")
+                self?.appStoreResult = result
                 completion(result)
             }else{
-                self.appStoreResult = nil
+                self?.appStoreResult = nil
                 completion(nil)
             }
         }
@@ -88,23 +78,23 @@ public class AppStoreManager {
     }
     
     public func checkNewVersion(_ type:VersionCheckType, isAvailable: @escaping (Bool) -> ()) {
-        self.getStoreVersion { (result) in
-            if let currentInstalledVersion = self.currentInstalledVersion,
+        self.getStoreVersion { [weak self] (result) in
+            if let currentInstalledVersion = self?.currentInstalledVersion,
                let appStoreVersion = result?.version {
                 switch currentInstalledVersion.compare(appStoreVersion, options: .numeric) {
                 case .orderedAscending:
                     switch type {
                     case .immediately:
-                        self.lastVersionCheckDate = Date()
+                        self?.lastVersionCheckDate = Date()
                         isAvailable(true)
                     default:
-                        guard let lastVersionCheckDate = self.lastVersionCheckDate else {
-                            self.lastVersionCheckDate = Date()
+                        guard let lastVersionCheckDate = self?.lastVersionCheckDate else {
+                            self?.lastVersionCheckDate = Date()
                             isAvailable(true)
                             return
                         }
                         if Date.days(since: lastVersionCheckDate) >= type.rawValue {
-                            self.lastVersionCheckDate = Date()
+                            self?.lastVersionCheckDate = Date()
                             isAvailable(true)
                         }else{
                             isAvailable(false)
@@ -120,18 +110,18 @@ public class AppStoreManager {
     }
     
     public func checkNewVersionAndShowAlert(_ type:VersionCheckType,at vc:UIViewController, canSkip:Bool, preferredStyle: UIAlertController.Style = .alert) {
-        self.getStoreVersion { (result) in
-            if let currentInstalledVersion = self.currentInstalledVersion,
+        self.getStoreVersion { [weak self] (result) in
+            if let currentInstalledVersion = self?.currentInstalledVersion,
                let appStoreVersion = result?.version {
                 switch currentInstalledVersion.compare(appStoreVersion, options: .numeric) {
                 case .orderedAscending:
-                    self.lastVersionCheckDate = Date()
-                    self.showAlertUpdate(at: vc, canSkip: canSkip, preferredStyle: preferredStyle)
+                    self?.lastVersionCheckDate = Date()
+                    self?.showAlertUpdate(at: vc, canSkip: canSkip, preferredStyle: preferredStyle)
                 case .orderedDescending, .orderedSame:
                     break
                 }
             }else{
-                self.log("Can't get Version")
+                self?.log("Can't get Version")
             }
         }
     }
@@ -139,23 +129,23 @@ public class AppStoreManager {
     //MARK: - Alert
     
     public func configureAlert(title:String?, message: String?) {
-        self.title = title ?? "New version available"
+        self.title = title ?? AppStoreManagerConstant.alertTitle
         self.message = message
     }
     
     public func configureAlert(updateButtonTitle:String?, skipButtonTitle:String?) {
-        self.updateButtonTitle = updateButtonTitle ?? "Update"
-        self.skipButtonTitle = skipButtonTitle ?? "Skip"
+        self.updateButtonTitle = updateButtonTitle ?? AppStoreManagerConstant.updateButtonTitle
+        self.skipButtonTitle = skipButtonTitle ?? AppStoreManagerConstant.skipButtonTitle
     }
     
     public func showAlertUpdate(at vc:UIViewController, canSkip:Bool, preferredStyle:UIAlertController.Style = .alert) {
-        DispatchQueue.main.async {
-            let alertVc = UIAlertController(title: self.title, message: self.message, preferredStyle: preferredStyle)
-            let skip = UIAlertAction(title: "Skip", style: .cancel) { (_) in
+        DispatchQueue.main.async { [weak self] in
+            let alertVc = UIAlertController(title: self?.title, message: self?.message, preferredStyle: preferredStyle)
+            let skip = UIAlertAction(title: AppStoreManagerConstant.skipButtonTitle, style: .cancel) { (_) in
                 //
             }
-            let update = UIAlertAction(title: "Update", style: .default) { (_) in
-                self.openAppStore()
+            let update = UIAlertAction(title: AppStoreManagerConstant.updateButtonTitle, style: .default) { (_) in
+                self?.openAppStore()
             }
             alertVc.addAction(update)
             if canSkip {
@@ -169,12 +159,12 @@ public class AppStoreManager {
         if let appStoreId = self.appStoreResult?.trackId {
             self.openAppStore(id: appStoreId)
         }else{
-            self.getStoreVersion { (result) in
+            self.getStoreVersion { [weak self] (result) in
                 guard let appStoreId = result?.trackId else {
-                    self.log("Can't get an AppId")
+                    self?.log("Can't get an AppId")
                     return
                 }
-                self.openAppStore(id: appStoreId)
+                self?.openAppStore(id: appStoreId)
             }
         }
     }
