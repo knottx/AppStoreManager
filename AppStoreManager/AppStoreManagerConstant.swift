@@ -24,7 +24,10 @@ extension Date {
     }
     
 }
+
+
 extension String {
+    
     func toDate(with format: String) -> Date? {
         let dateFormatter = DateFormatter()
         dateFormatter.calendar = Calendar(identifier: .gregorian)

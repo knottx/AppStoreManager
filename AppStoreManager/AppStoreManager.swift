@@ -13,9 +13,9 @@ public enum VersionCheckType:Int {
     case weekly = 7
 }
 
-enum AppStoreDefaults: String {
-    case storedVersionCheckDate
-    case storedSkippedVersion
+struct AppStoreDefaults {
+    static let storedVersionCheckDate = "storedVersionCheckDate"
+    static let storedSkippedVersion = "storedSkippedVersion"
 }
 
 public class AppStoreManager {
@@ -30,25 +30,21 @@ public class AppStoreManager {
     
     var lastVersionCheckDate:Date? {
         didSet{
-            if let date = self.lastVersionCheckDate {
-                UserDefaults.standard.set(date, forKey: AppStoreDefaults.storedVersionCheckDate.rawValue)
-                UserDefaults.standard.synchronize()
-            }
+            UserDefaults.standard.set(self.lastVersionCheckDate, forKey: AppStoreDefaults.storedVersionCheckDate)
+            UserDefaults.standard.synchronize()
         }
     }
     
     let bundleId = Bundle.main.bundleIdentifier ?? ""
     
     var currentInstalledVersion:String? {
-        get {
-            return Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
-        }
+        return Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
     }
     
     var appStoreResult:AppStoreResult?
     
     init() {
-        self.lastVersionCheckDate = UserDefaults.standard.object(forKey: AppStoreDefaults.storedVersionCheckDate.rawValue) as? Date
+        self.lastVersionCheckDate = UserDefaults.standard.object(forKey: AppStoreDefaults.storedVersionCheckDate) as? Date
     }
     
     func getStoreVersion(completion: @escaping (AppStoreResult?) -> ()) {
