@@ -5,6 +5,8 @@
 //  Created by Visarut Tippun on 8/1/21.
 //
 
+#if canImport(UIKit)
+
 import UIKit
 
 public enum VersionCheckType:Int {
@@ -179,3 +181,6 @@ public class AppStoreManager {
     }
     
 }
+
+
+#endif
