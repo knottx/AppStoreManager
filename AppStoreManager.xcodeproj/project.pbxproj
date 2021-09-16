@@ -8,10 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		1A38DD9B25A7F907003F396E /* AppStoreManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A38DD9125A7F907003F396E /* AppStoreManager.framework */; };
-		1A38DDA025A7F907003F396E /* AppStoreManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A38DD9F25A7F907003F396E /* AppStoreManagerTests.swift */; };
-		1A38DDB625A7FB82003F396E /* AppStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A38DDB525A7FB82003F396E /* AppStoreManager.swift */; };
-		8B7CD1B326006F60005E8076 /* AppStoreManagerModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7CD1B226006F60005E8076 /* AppStoreManagerModels.swift */; };
-		8B7CD1B7260070B2005E8076 /* AppStoreManagerConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7CD1B6260070B2005E8076 /* AppStoreManagerConstant.swift */; };
+		5ECA4E4F26F32B0D00EFB8F1 /* AppStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECA4E4726F32B0D00EFB8F1 /* AppStoreManager.swift */; };
+		5ECA4E5026F32B0D00EFB8F1 /* AppStoreManagerModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECA4E4826F32B0D00EFB8F1 /* AppStoreManagerModels.swift */; };
+		5ECA4E5126F32B0D00EFB8F1 /* AppStoreManagerConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECA4E4926F32B0D00EFB8F1 /* AppStoreManagerConstant.swift */; };
+		5ECA4E5526F32B1200EFB8F1 /* AppStoreManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECA4E4D26F32B0D00EFB8F1 /* AppStoreManagerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,13 +26,13 @@
 
 /* Begin PBXFileReference section */
 		1A38DD9125A7F907003F396E /* AppStoreManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AppStoreManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		1A38DD9525A7F907003F396E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1A38DD9A25A7F907003F396E /* AppStoreManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppStoreManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		1A38DD9F25A7F907003F396E /* AppStoreManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreManagerTests.swift; sourceTree = "<group>"; };
-		1A38DDA125A7F907003F396E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1A38DDB525A7FB82003F396E /* AppStoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreManager.swift; sourceTree = "<group>"; };
-		8B7CD1B226006F60005E8076 /* AppStoreManagerModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreManagerModels.swift; sourceTree = "<group>"; };
-		8B7CD1B6260070B2005E8076 /* AppStoreManagerConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreManagerConstant.swift; sourceTree = "<group>"; };
+		5ECA4E4726F32B0D00EFB8F1 /* AppStoreManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppStoreManager.swift; sourceTree = "<group>"; };
+		5ECA4E4826F32B0D00EFB8F1 /* AppStoreManagerModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppStoreManagerModels.swift; sourceTree = "<group>"; };
+		5ECA4E4926F32B0D00EFB8F1 /* AppStoreManagerConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppStoreManagerConstant.swift; sourceTree = "<group>"; };
+		5ECA4E4A26F32B0D00EFB8F1 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5ECA4E4D26F32B0D00EFB8F1 /* AppStoreManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppStoreManagerTests.swift; sourceTree = "<group>"; };
+		5ECA4E4E26F32B0D00EFB8F1 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,8 +57,8 @@
 		1A38DD8725A7F907003F396E = {
 			isa = PBXGroup;
 			children = (
-				1A38DD9325A7F907003F396E /* AppStoreManager */,
-				1A38DD9E25A7F907003F396E /* AppStoreManagerTests */,
+				5ECA4E4526F32B0D00EFB8F1 /* Sources */,
+				5ECA4E4B26F32B0D00EFB8F1 /* Tests */,
 				1A38DD9225A7F907003F396E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -72,22 +72,38 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		1A38DD9325A7F907003F396E /* AppStoreManager */ = {
+		5ECA4E4526F32B0D00EFB8F1 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				1A38DD9525A7F907003F396E /* Info.plist */,
-				1A38DDB525A7FB82003F396E /* AppStoreManager.swift */,
-				8B7CD1B226006F60005E8076 /* AppStoreManagerModels.swift */,
-				8B7CD1B6260070B2005E8076 /* AppStoreManagerConstant.swift */,
+				5ECA4E4626F32B0D00EFB8F1 /* AppStoreManager */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		5ECA4E4626F32B0D00EFB8F1 /* AppStoreManager */ = {
+			isa = PBXGroup;
+			children = (
+				5ECA4E4726F32B0D00EFB8F1 /* AppStoreManager.swift */,
+				5ECA4E4826F32B0D00EFB8F1 /* AppStoreManagerModels.swift */,
+				5ECA4E4926F32B0D00EFB8F1 /* AppStoreManagerConstant.swift */,
+				5ECA4E4A26F32B0D00EFB8F1 /* Info.plist */,
 			);
 			path = AppStoreManager;
 			sourceTree = "<group>";
 		};
-		1A38DD9E25A7F907003F396E /* AppStoreManagerTests */ = {
+		5ECA4E4B26F32B0D00EFB8F1 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				1A38DD9F25A7F907003F396E /* AppStoreManagerTests.swift */,
-				1A38DDA125A7F907003F396E /* Info.plist */,
+				5ECA4E4C26F32B0D00EFB8F1 /* AppStoreManagerTests */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		5ECA4E4C26F32B0D00EFB8F1 /* AppStoreManagerTests */ = {
+			isa = PBXGroup;
+			children = (
+				5ECA4E4D26F32B0D00EFB8F1 /* AppStoreManagerTests.swift */,
+				5ECA4E4E26F32B0D00EFB8F1 /* Info.plist */,
 			);
 			path = AppStoreManagerTests;
 			sourceTree = "<group>";
@@ -200,9 +216,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1A38DDB625A7FB82003F396E /* AppStoreManager.swift in Sources */,
-				8B7CD1B326006F60005E8076 /* AppStoreManagerModels.swift in Sources */,
-				8B7CD1B7260070B2005E8076 /* AppStoreManagerConstant.swift in Sources */,
+				5ECA4E4F26F32B0D00EFB8F1 /* AppStoreManager.swift in Sources */,
+				5ECA4E5026F32B0D00EFB8F1 /* AppStoreManagerModels.swift in Sources */,
+				5ECA4E5126F32B0D00EFB8F1 /* AppStoreManagerConstant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -210,7 +226,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1A38DDA025A7F907003F396E /* AppStoreManagerTests.swift in Sources */,
+				5ECA4E5526F32B1200EFB8F1 /* AppStoreManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -357,7 +373,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = AppStoreManager/Info.plist;
+				INFOPLIST_FILE = Sources/AppStoreManager/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -386,7 +402,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = AppStoreManager/Info.plist;
+				INFOPLIST_FILE = Sources/AppStoreManager/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
