@@ -4,7 +4,7 @@ import PackageDescription
 let package = Package(
     name: "AppStoreManager",
     platforms: [
-        .iOS(.v8)
+        .iOS(.v10)
     ],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
