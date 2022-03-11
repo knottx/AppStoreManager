@@ -9,7 +9,7 @@
 
 import UIKit
 
-public enum VersionCheckType:Int {
+public enum VersionCheckType: Int {
     case immediately = 0
     case daily = 1
     case weekly = 7
@@ -24,13 +24,13 @@ public class AppStoreManager {
     
     public static let shared = AppStoreManager()
     
-    var title:String = AppStoreManagerConstant.alertTitle
-    var message:String? = AppStoreManagerConstant.alertMessage
+    var title: String = AppStoreManagerConstant.alertTitle
+    var message: String? = AppStoreManagerConstant.alertMessage
     
-    var skipButtonTitle:String = AppStoreManagerConstant.skipButtonTitle
-    var updateButtonTitle:String = AppStoreManagerConstant.updateButtonTitle
+    var skipButtonTitle: String = AppStoreManagerConstant.skipButtonTitle
+    var updateButtonTitle: String = AppStoreManagerConstant.updateButtonTitle
     
-    var lastVersionCheckDate:Date? {
+    var lastVersionCheckDate: Date? {
         didSet{
             UserDefaults.standard.set(self.lastVersionCheckDate, forKey: AppStoreDefaults.storedVersionCheckDate)
             UserDefaults.standard.synchronize()
@@ -39,11 +39,11 @@ public class AppStoreManager {
     
     let bundleId = Bundle.main.bundleIdentifier ?? ""
     
-    var currentInstalledVersion:String? {
+    var currentInstalledVersion: String? {
         return Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
     }
     
-    var appStoreResult:AppStoreResult?
+    var appStoreResult: AppStoreResult?
     
     init() {
         self.lastVersionCheckDate = UserDefaults.standard.object(forKey: AppStoreDefaults.storedVersionCheckDate) as? Date
@@ -75,7 +75,7 @@ public class AppStoreManager {
         task.resume()
     }
     
-    public func checkNewVersion(_ type:VersionCheckType, isAvailable: @escaping (Bool) -> ()) {
+    public func checkNewVersion(_ type: VersionCheckType, isAvailable: @escaping (Bool) -> ()) {
         self.getStoreVersion { [weak self] (result) in
             if let currentInstalledVersion = self?.currentInstalledVersion,
                let appStoreVersion = result?.version {
@@ -107,7 +107,10 @@ public class AppStoreManager {
         }
     }
     
-    public func checkNewVersionAndShowAlert(_ type:VersionCheckType,at vc:UIViewController, canSkip:Bool, preferredStyle: UIAlertController.Style = .alert) {
+    public func checkNewVersionAndShowAlert(_ type: VersionCheckType,
+                                            at vc: UIViewController,
+                                            canSkip: Bool,
+                                            preferredStyle: UIAlertController.Style = .alert) {
         self.getStoreVersion { [weak self] (result) in
             if let currentInstalledVersion = self?.currentInstalledVersion,
                let appStoreVersion = result?.version {
@@ -126,17 +129,17 @@ public class AppStoreManager {
     
     //MARK: - Alert
     
-    public func configureAlert(title:String?, message: String?) {
+    public func configureAlert(title: String?, message: String?) {
         self.title = title ?? AppStoreManagerConstant.alertTitle
         self.message = message
     }
     
-    public func configureAlert(updateButtonTitle:String?, skipButtonTitle:String?) {
+    public func configureAlert(updateButtonTitle: String?, skipButtonTitle: String?) {
         self.updateButtonTitle = updateButtonTitle ?? AppStoreManagerConstant.updateButtonTitle
         self.skipButtonTitle = skipButtonTitle ?? AppStoreManagerConstant.skipButtonTitle
     }
     
-    public func showAlertUpdate(at vc:UIViewController, canSkip:Bool, preferredStyle:UIAlertController.Style = .alert) {
+    public func showAlertUpdate(at vc:UIViewController, canSkip: Bool, preferredStyle: UIAlertController.Style = .alert) {
         DispatchQueue.main.async { [weak self] in
             let alertVc = UIAlertController(title: self?.title, message: self?.message, preferredStyle: preferredStyle)
             let skip = UIAlertAction(title: AppStoreManagerConstant.skipButtonTitle, style: .cancel) { (_) in
@@ -167,7 +170,7 @@ public class AppStoreManager {
         }
     }
     
-    func openAppStore(id appStoreId:Int) {
+    func openAppStore(id appStoreId: Int) {
         if let url = URL(string: "https://itunes.apple.com/app/id\(appStoreId)"),
            UIApplication.shared.canOpenURL(url) {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
