@@ -1,12 +1,17 @@
 **AppStoreManager** is a new version checking framework for iOS.
 
 ## 📲 Installation
-
+### CocoaPods
 `AppStoreManager` is available on [CocoaPods](https://cocoapods.org/pods/AppStoreManager):
 
 ```ruby
 pod 'AppStoreManager'
 ```
+
+### Swift Package Manager
+- File > Swift Packages > Add Package Dependency
+- Add `https://github.com/knottx/AppStoreManager.git`
+- Select "Up to Next Major" with "1.3.3"
 
 ## 📝 How
 ### Code Implementation
