@@ -14,20 +14,15 @@ struct AppStoreManagerConstant {
     static let updateButtonTitle = "Update"
 }
 
-
 extension Date {
-    
     static func days(since date: Date) -> Int {
         let calendar = Calendar(identifier: .gregorian)
         let components = calendar.dateComponents([.day], from: date, to: Date())
         return components.day ?? 0
     }
-    
 }
 
-
 extension String {
-    
     func toDate(with format: String) -> Date? {
         let dateFormatter = DateFormatter()
         dateFormatter.calendar = Calendar(identifier: .gregorian)
@@ -37,5 +32,4 @@ extension String {
         let date = dateFormatter.date(from: self)
         return date
     }
-
 }

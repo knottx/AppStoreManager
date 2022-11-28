@@ -1,0 +1,34 @@
+# file options
+
+--symlinks ignore
+--swiftversion 5.1
+
+# rules
+--enable isEmpty
+--disable andOperator
+--disable wrapMultilineStatementBraces
+--ifdef no-indent
+
+# format options
+
+--closingparen same-line
+--commas inline
+--comments indent
+--decimalgrouping 3,5
+--exponentcase lowercase
+--exponentgrouping disabled
+--fractiongrouping disabled
+--importgrouping testable-top
+--operatorfunc no-space
+--nospaceoperators ..<, ...
+--selfrequired validate
+--self insert
+--stripunusedargs closure-only
+--wraparguments after-first
+--wrapcollections after-first
+--wrapparameters after-first
+--disable redundantReturn
+
+# excludes
+
+--exclude Pods, Package.swift

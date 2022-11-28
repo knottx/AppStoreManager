@@ -64,6 +64,6 @@ AppStoreManager.shared.configureAlert(updateButtonTitle: <String?>, skipButtonTi
 
 ## 📋 Requirements
 
-* iOS 10.0+
+* iOS 11.0+
 * Xcode 11+
 * Swift 5.1+
