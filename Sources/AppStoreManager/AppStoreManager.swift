@@ -142,10 +142,10 @@ public class AppStoreManager {
     public func showAlertUpdate(at vc:UIViewController, canSkip: Bool, preferredStyle: UIAlertController.Style = .alert) {
         DispatchQueue.main.async { [weak self] in
             let alertVc = UIAlertController(title: self?.title, message: self?.message, preferredStyle: preferredStyle)
-            let skip = UIAlertAction(title: AppStoreManagerConstant.skipButtonTitle, style: .cancel) { (_) in
+            let skip = UIAlertAction(title: self?.skipButtonTitle ?? AppStoreManagerConstant.skipButtonTitle, style: .cancel) { (_) in
                 //
             }
-            let update = UIAlertAction(title: AppStoreManagerConstant.updateButtonTitle, style: .default) { (_) in
+            let update = UIAlertAction(title: self?.updateButtonTitle ?? AppStoreManagerConstant.updateButtonTitle, style: .default) { (_) in
                 self?.openAppStore()
             }
             alertVc.addAction(update)
