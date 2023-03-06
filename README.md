@@ -11,7 +11,7 @@ pod 'AppStoreManager'
 ### Swift Package Manager
 - File > Swift Packages > Add Package Dependency
 - Add `https://github.com/knottx/AppStoreManager.git`
-- Select "Up to Next Major" with "1.3.5"
+- Select "Up to Next Major" with "1.3.6"
 
 ## 📝 How
 

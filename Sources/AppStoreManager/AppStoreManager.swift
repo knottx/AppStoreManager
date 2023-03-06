@@ -52,7 +52,7 @@ public class AppStoreManager {
                                  completion: @escaping (AppStoreResult?) -> Void) {
         var baseUrl = "https://itunes.apple.com"
         if let code = countryCode {
-            baseUrl.append("/\(code)")
+            baseUrl.append("/\(code.lowercased())")
         }
         baseUrl.append("/lookup?bundleId=\(self.bundleId)")
         guard let url = URL(string: baseUrl) else {
@@ -181,7 +181,7 @@ public class AppStoreManager {
                               id appStoreId: Int) {
         var baseUrl = "https://itunes.apple.com"
         if let code = countryCode {
-            baseUrl.append("/\(code)")
+            baseUrl.append("/\(code.lowercased())")
         }
         baseUrl.append("/app/id\(appStoreId)")
         if let url = URL(string: baseUrl),
