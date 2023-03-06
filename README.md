@@ -11,43 +11,93 @@ pod 'AppStoreManager'
 ### Swift Package Manager
 - File > Swift Packages > Add Package Dependency
 - Add `https://github.com/knottx/AppStoreManager.git`
-- Select "Up to Next Major" with "1.3.4"
+- Select "Up to Next Major" with "1.3.5"
 
 ## 📝 How
+
 ### Code Implementation
+
 First:
+
 ```swift
 import AppStoreManager
 ```
 
-Show alert when update available, do something like this:
-```swift
-//  Can select version check type => .immediately, .daily, .weekly
-AppStoreManager.shared.checkNewVersionAndShowAlert(.immediately, at: self, canSkip: true, preferredStyle: .alert)
-//  If you don't need to show skip button, you can set the 'canSkip: false'
-//  PreferredStyle default is '.alert', Can be select between '.alert' and '.actionSheet'
-```
+Check New Version Available:
 
-For handle when update available, do something like this:
-```swift
-//  Can select version check type => .immediately, .daily, .weekly
-AppStoreManager.shared.checkNewVersion(.immediately) { (isAvailable) in
-    if isAvailable {
-        //  has new version available.
-        AppStoreManager.shared.showAlertUpdate(at: self, canSkip: true, preferredStyle: .alert)
-        //  If you don't need to show skip button, you can set the 'canSkip: false'
-        //  PreferredStyle default is '.alert', Can be select between '.alert' and '.actionSheet'
-    }else{
-        //  no new version.
+- Can select version check type => `.immediately`, `.daily`, `.weekly`
+
+
+    ```swift
+    AppStoreManager.shared.checkNewVersion(.immediately) { (isAvailable) in
+        if isAvailable {
+            //  New Version Available.
+        } else {
+            //  No New Version.
+        }
     }
-}
-```
+    ```
+    
+- If your app is only available outside the U.S. App Store, you will need to set **countryCode** to the two-letter country code of the store you want to search. 
+    > See http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2 for a list of ISO Country Codes.
+    
+    ```swift
+    AppStoreManager.shared.checkNewVersion(.immediately, countryCode: "th") { (isAvailable) in
+        if isAvailable {
+            //  New Version Available.
+        } else {
+            //  No New Version.
+        }
+    }
+    ```
 
-For open AppStore, do something like this:
-```swift
-AppStoreManager.shared.openAppStore()
-//  go to AppStore for update your Application
-```
+
+Check New Version Available and Show Alert:
+
+- Can select version check type => `.immediately`, `.daily`, `.weekly`
+- If you don't need to show skip button, you can set the **canSkip:** `false`
+
+    ```swift
+    AppStoreManager.shared.checkNewVersionAndShowAlert(.immediately, at: self, canSkip: true)
+    ```
+
+- If your app is only available outside the U.S. App Store, you will need to set **countryCode** to the two-letter country code of the store you want to search. 
+    > See http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2 for a list of ISO Country Codes.
+    
+    ```swift
+    AppStoreManager.shared.checkNewVersionAndShowAlert(.immediately, countryCode: "th", at: self, canSkip: true)
+    ```
+
+
+Open AppStore:
+
+    ```swift
+    AppStoreManager.shared.openAppStore()
+    ```
+
+- If your app is only available outside the U.S. App Store, you will need to set **countryCode** to the two-letter country code of the store you want to search. 
+    > See http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2 for a list of ISO Country Codes.
+    
+    ```swift
+    AppStoreManager.shared.openAppStore(countryCode: "th")
+    ```
+
+Alert Open AppStore:
+
+- If you don't need to show skip button, you can set the **canSkip:** `false`
+- **preferredStyle** default is `.alert`, Can be select between `.alert` and `.actionSheet`
+
+    ```swift
+    AppStoreManager.shared.showAlertUpdate(at: self, canSkip: true)
+    ```
+    
+- If your app is only available outside the U.S. App Store, you will need to set **countryCode** to the two-letter country code of the store you want to search. 
+    > See http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2 for a list of ISO Country Codes.
+    
+    ```swift
+    AppStoreManager.shared.showAlertUpdate(countryCode: "th",at: self, canSkip: true)
+    ```
+
 ### Customization
 #### AppStoreManager
 `AppStoreManager` supports the following:

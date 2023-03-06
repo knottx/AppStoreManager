@@ -48,8 +48,14 @@ public class AppStoreManager {
         self.lastVersionCheckDate = UserDefaults.standard.object(forKey: AppStoreDefaults.storedVersionCheckDate) as? Date
     }
 
-    func getStoreVersion(completion: @escaping (AppStoreResult?) -> Void) {
-        guard let url = URL(string: "https://itunes.apple.com/lookup?bundleId=\(self.bundleId)") else {
+    private func getStoreVersion(countryCode: String?,
+                                 completion: @escaping (AppStoreResult?) -> Void) {
+        var baseUrl = "https://itunes.apple.com"
+        if let code = countryCode {
+            baseUrl.append("/\(code)")
+        }
+        baseUrl.append("/lookup?bundleId=\(self.bundleId)")
+        guard let url = URL(string: baseUrl) else {
             completion(nil)
             return
         }
@@ -74,8 +80,10 @@ public class AppStoreManager {
         task.resume()
     }
 
-    public func checkNewVersion(_ type: VersionCheckType, isAvailable: @escaping (Bool) -> Void) {
-        self.getStoreVersion { [weak self] result in
+    public func checkNewVersion(_ type: VersionCheckType,
+                                countryCode: String? = nil,
+                                isAvailable: @escaping (Bool) -> Void) {
+        self.getStoreVersion(countryCode: countryCode) { [weak self] result in
             if let currentInstalledVersion = self?.currentInstalledVersion,
                let appStoreVersion = result?.version {
                 switch currentInstalledVersion.compare(appStoreVersion, options: .numeric) {
@@ -101,51 +109,49 @@ public class AppStoreManager {
                     isAvailable(false)
                 }
             } else {
+                self?.log("Can't get Version")
                 isAvailable(false)
             }
         }
     }
 
     public func checkNewVersionAndShowAlert(_ type: VersionCheckType,
+                                            countryCode: String? = nil,
                                             at vc: UIViewController,
-                                            canSkip: Bool,
-                                            preferredStyle: UIAlertController.Style = .alert) {
-        self.getStoreVersion { [weak self] result in
-            if let currentInstalledVersion = self?.currentInstalledVersion,
-               let appStoreVersion = result?.version {
-                switch currentInstalledVersion.compare(appStoreVersion, options: .numeric) {
-                case .orderedAscending:
-                    self?.lastVersionCheckDate = Date()
-                    self?.showAlertUpdate(at: vc, canSkip: canSkip, preferredStyle: preferredStyle)
-                case .orderedDescending, .orderedSame:
-                    break
-                }
-            } else {
-                self?.log("Can't get Version")
+                                            canSkip: Bool) {
+        self.checkNewVersion(type) { [weak self] isAvailable in
+            if isAvailable {
+                self?.showAlertUpdate(at: vc, canSkip: canSkip)
             }
         }
     }
 
     // MARK: - Alert
 
-    public func configureAlert(title: String?, message: String?) {
+    public func configureAlert(title: String?,
+                               message: String?) {
         self.title = title ?? AppStoreManagerConstant.alertTitle
         self.message = message
     }
 
-    public func configureAlert(updateButtonTitle: String?, skipButtonTitle: String?) {
+    public func configureAlert(updateButtonTitle: String?,
+                               skipButtonTitle: String?) {
         self.updateButtonTitle = updateButtonTitle ?? AppStoreManagerConstant.updateButtonTitle
         self.skipButtonTitle = skipButtonTitle ?? AppStoreManagerConstant.skipButtonTitle
     }
 
-    public func showAlertUpdate(at vc: UIViewController, canSkip: Bool, preferredStyle: UIAlertController.Style = .alert) {
+    public func showAlertUpdate(countryCode: String? = nil,
+                                at vc: UIViewController,
+                                canSkip: Bool) {
         DispatchQueue.main.async { [weak self] in
-            let alertVc = UIAlertController(title: self?.title, message: self?.message, preferredStyle: preferredStyle)
+            let alertVc = UIAlertController(title: self?.title,
+                                            message: self?.message,
+                                            preferredStyle: .alert)
             let skip = UIAlertAction(title: self?.skipButtonTitle ?? AppStoreManagerConstant.skipButtonTitle, style: .cancel) { _ in
                 //
             }
             let update = UIAlertAction(title: self?.updateButtonTitle ?? AppStoreManagerConstant.updateButtonTitle, style: .default) { _ in
-                self?.openAppStore()
+                self?.openAppStore(countryCode: countryCode)
             }
             alertVc.addAction(update)
             if canSkip {
@@ -155,22 +161,30 @@ public class AppStoreManager {
         }
     }
 
-    public func openAppStore() {
+    public func openAppStore(countryCode: String? = nil) {
         if let appStoreId = self.appStoreResult?.trackId {
-            self.openAppStore(id: appStoreId)
+            self.openAppStore(countryCode: countryCode,
+                              id: appStoreId)
         } else {
-            self.getStoreVersion { [weak self] result in
+            self.getStoreVersion(countryCode: countryCode) { [weak self] result in
                 guard let appStoreId = result?.trackId else {
                     self?.log("Can't get an AppId")
                     return
                 }
-                self?.openAppStore(id: appStoreId)
+                self?.openAppStore(countryCode: countryCode,
+                                   id: appStoreId)
             }
         }
     }
 
-    func openAppStore(id appStoreId: Int) {
-        if let url = URL(string: "https://itunes.apple.com/app/id\(appStoreId)"),
+    private func openAppStore(countryCode: String?,
+                              id appStoreId: Int) {
+        var baseUrl = "https://itunes.apple.com"
+        if let code = countryCode {
+            baseUrl.append("/\(code)")
+        }
+        baseUrl.append("/app/id\(appStoreId)")
+        if let url = URL(string: baseUrl),
            UIApplication.shared.canOpenURL(url) {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         } else {
